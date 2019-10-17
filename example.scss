@@ -1,0 +1,179 @@
+/* 
+
+    Make one mixin for the 3 lines of the box-shadow styling.
+
+    Make the general padding the same everywhere with one variable. (red=16px, blue=8px), the footer h6 should have double the padding of the other elements. Use "operations" to do this. Do NOT hardcode the padding inside your scss.
+
+    Nest the styling rules of grouped elements, like the sections in the Article.
+
+    Make use of extend to re-use the same CSS for the "success", "error" and "warning" messages.
+    
+    Part 2 - the tricky part!
+
+    In the HTML, add 2 links called "blue" & "red".
+    Clicking one of the 2 links should change the text to red/blue with a good matching background (keep it readable)! All the other CSS should be the same, to do this combine SASS variables with file imports.
+
+    Take some time to think how to do the structure of this exercise, and how many files you will need. It might be good to discuss this with your fellow juniors!*/
+
+@import "reset.scss";
+
+@mixin shadow($boxshadow) {
+    -webkit-box-shadow: $boxshadow;
+    -moz-box-shadow: $boxshadow;
+    box-shadow: $boxshadow;  
+    }
+    article section { @include shadow(10px 10px 19px -4px rgba(255, 255, 255, 0.75)); 
+}
+
+$paddings: (
+    x: 16px,
+    y: 8px
+);
+
+article code{
+        padding: map-get($paddings,x) map-get($paddings,x)+ map-get($paddings,y);
+    }
+
+/* article code{
+    pad(a);
+}
+
+@function pad($paddingsname){
+    @return map-get($padding,$paddingsname)
+} */
+
+
+h6 {
+    padding: map-get($paddings,x)*2;
+}
+
+/* .red {
+    @include btn-theme($red);
+ }
+.blue {
+    @include btn-theme($blue);
+ } 
+ <button class="red btn">
+   Button
+</button>
+<button class="blue btn">
+   Button
+</button>
+
+@function set-notification-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return #000000; // Lighter backgorund, return dark color
+  } @else {
+    @return #ffffff; // Darker background, return light color
+  }
+}
+
+*/
+
+body {
+    font: 100% "Space Mono", monospace;
+    color: #2748B3;
+    background-color: #222;
+    background-image: radial-gradient(#fff, rgba(255, 255, 255, 0.2) 2px, transparent 40px), radial-gradient(#fff, rgba(255, 255, 255, 0.15) 1px, transparent 30px), radial-gradient(#fff, rgba(255, 255, 255, 0.1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+    background-attachment: fixed
+}
+
+article {
+    display: flex;
+    flex-wrap: wrap;
+    section {
+        flex-grow: 1;
+        flex-basis: 45%;
+        border: 1px silver solid;
+        padding: 16px;
+        margin: 16px;
+        clear: both;
+        overflow: auto;
+        box-sizing: border-box;
+        selling-points {
+            flex-grow: 2;
+            flex-basis: 100%;
+        }
+    }
+    code {
+        background: #fff;
+        border: 1px solid #ddd;
+        color: #666;
+        page-break-inside: avoid;
+        font-family: monospace;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 1.6em;
+        max-width: 100%;
+        overflow: auto;
+        display: block;
+        word-wrap: break-word;
+        .before {
+            float: left;
+            width: 40%;
+        }
+        .after {
+            float: right;
+            width: 40%
+        }
+    }
+}
+
+h1,
+h2,
+h6 {
+    color: #6B8EFF
+}
+
+h1 {
+    text-align: center;
+    color: red,;
+}
+
+h6 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 0px
+}
+
+.message,
+.success,
+.error,
+.warning {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #2748B3;
+    background-color: #000;
+    width: 100%
+}
+
+.success {
+    background-color: green
+}
+
+.error {
+    background-color: red
+}
+
+.warning {
+    background-color: orange
+}
+
+.color-buttons{
+    width: 100%;
+    margin: 1em auto;
+}
+
+a{
+    padding: map-get($paddings,a) map-get($paddings,a);
+    /* background: lightblue; */
+    border: solid 1px blue;
+}
+
+.color-buttons a:nth-of-type(2){
+    color: red;
+}
+
+
