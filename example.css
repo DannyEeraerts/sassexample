@@ -1,6 +1,6 @@
 /* 
 
-    Make one mixin for the 3 lines of the box-shadow styling.
+    Make one mixin for the 3 lines of the box-shadow styling tESTT.
 
     Make the general padding the same everywhere with one variable. (red=16px, blue=8px), the footer h6 should have double the padding of the other elements. Use "operations" to do this. Do NOT hardcode the padding inside your scss.
 
@@ -19,23 +19,30 @@ body {
   padding: 0;
 }
 
+a:focus, a:active {
+  color: #ff0066;
+}
+
 article section {
   -webkit-box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
   -moz-box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
   box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
 }
 
+h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* article code{
+        padding: map-get($paddings,x) map-get($paddings,x)+ map-get($paddings,y);
+    }; */
 article code {
   padding: 16px 24px;
 }
 
-/* article code{
-    pad(a);
-}
-
-@function pad($paddingsname){
-    @return map-get($padding,$paddingsname)
-} */
 h6 {
   padding: 32px;
 }
@@ -64,7 +71,7 @@ h6 {
 */
 body {
   font: 100% "Space Mono", monospace;
-  color: #2748B3;
+  color: #7a91db;
   background-color: #222;
   background-image: radial-gradient(#fff, rgba(255, 255, 255, 0.2) 2px, transparent 40px), radial-gradient(#fff, rgba(255, 255, 255, 0.15) 1px, transparent 30px), radial-gradient(#fff, rgba(255, 255, 255, 0.1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 2px, transparent 30px);
   background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
@@ -154,17 +161,20 @@ h6 {
 }
 
 .color-buttons {
-  width: 100%;
-  margin: 1em auto;
+  display: flex;
+  justify-content: center;
+  column-gap: 2em;
 }
 
 a {
-  /* background: lightblue; */
+  padding: 16px 8px;
+  background: lightgrey;
   border: solid 1px blue;
+  text-decoration: none;
 }
 
-.color-buttons a:nth-of-type(2) {
-  color: red;
-}
+/* .color-buttons a:nth-of-type(2){
+    color: orange;
+} */
 
 /*# sourceMappingURL=example.css.map */

@@ -16,33 +16,39 @@
     Take some time to think how to do the structure of this exercise, and how many files you will need. It might be good to discuss this with your fellow juniors!*/
 
 @import "reset.scss";
+@import "color.scss";
+@import "centercenter";
 
 @mixin shadow($boxshadow) {
     -webkit-box-shadow: $boxshadow;
     -moz-box-shadow: $boxshadow;
     box-shadow: $boxshadow;  
     }
-    article section { @include shadow(10px 10px 19px -4px rgba(255, 255, 255, 0.75)); 
+
+article section { @include shadow(10px 10px 19px -4px rgba(255, 255, 255, 0.75)); 
 }
+h1 {@include centercenter()};
 
 $paddings: (
     x: 16px,
     y: 8px
 );
 
-article code{
-        padding: map-get($paddings,x) map-get($paddings,x)+ map-get($paddings,y);
-    }
-
 /* article code{
-    pad(a);
-}
+        padding: map-get($paddings,x) map-get($paddings,x)+ map-get($paddings,y);
+    }; */
+
+
+// shorter way to write: map-get(), create a function for this
 
 @function pad($paddingsname){
-    @return map-get($padding,$paddingsname)
-} */
+    @return map-get($paddings, $paddingsname)
+}
 
-
+article code{
+    padding: pad(x) pad(x)+pad(y);
+};
+    
 h6 {
     padding: map-get($paddings,x)*2;
 }
@@ -72,7 +78,7 @@ h6 {
 
 body {
     font: 100% "Space Mono", monospace;
-    color: #2748B3;
+    color: rgb(122, 145, 219);
     background-color: #222;
     background-image: radial-gradient(#fff, rgba(255, 255, 255, 0.2) 2px, transparent 40px), radial-gradient(#fff, rgba(255, 255, 255, 0.15) 1px, transparent 30px), radial-gradient(#fff, rgba(255, 255, 255, 0.1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 2px, transparent 30px);
     background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
@@ -162,18 +168,25 @@ h6 {
 }
 
 .color-buttons{
-    width: 100%;
-    margin: 1em auto;
+    display: flex;
+    justify-content: center;
+    column-gap: 2em;
 }
 
 a{
-    padding: map-get($paddings,a) map-get($paddings,a);
-    /* background: lightblue; */
+    padding: map-get($paddings,x) map-get($paddings,y);
+    background: lightgrey;
     border: solid 1px blue;
+    text-decoration: none;
 }
 
-.color-buttons a:nth-of-type(2){
-    color: red;
-}
+/* .color-buttons a:nth-of-type(2){
+    color: orange;
+} */
+
+
+
+
+
 
 
